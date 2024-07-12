@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>学食ガチャ</title>
+<meta charset="utf-8">
+</head>
+
+<body>
+<h1 style="text-align: center;">岡山大学学食ガチャ</h1>
+岡山大学学食のメニューから，入力された予算以下でランダムに排出します．<br>
+プログラムは精査されていないため，おかずのみとかライス複数とか22円余りとか出ますが悪しからず．<br>
+22円余りが気になるという方は予算を+1円するといい感じになるかも．
+    <br><br>
+    <input type="name" placeholder="予算を入力" id="budget">
+    <br><br>
+    <input type = "button" value="ガチャを回す(イートイン)" onclick="Gacha(1);">
+    <input type = "button" value="ガチャを回す(テイクアウト)" onclick="Gacha(0);">
+    <div id="result">
+
+    </div>
+<script type="text/javascript" src="sc_gacha.js"></script>
+</body>
+</html>
