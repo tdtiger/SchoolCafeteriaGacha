@@ -8,15 +8,16 @@ let menuPrice = [];
 let resultName = [];
 let resultPrice = [];
 
+// JSONファイルを読み込む
 fetch('menu.json')
     .then(response => response.json())
     .then(data => {
-        let menu = data;
-        menuName = Object.keys(menu);
-        for (let i in menu) {
+        const menuItems = data.menu;
+        menuItems.forEach(item => {
+            menuName.push(item.name);
+            menuPrice.push(item.price);
             menuLength++;
-            menuPrice.push(menu[i]);
-        }
+        });
     })
     .catch(error => console.error('Error loading menu:', error));
 
