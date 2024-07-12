@@ -8,6 +8,16 @@ let menuPrice = [];
 let resultName = [];
 let resultPrice = [];
 
+let btn_in = document.getElementById("eatin");
+btn_in.addEventListener('click',function(){
+    Gacha(1);
+},false);
+
+let btn_out = document.getElementById("takeout");
+btn_out.addEventListener('click',function(){
+    Gacha(0);
+},false);
+
 let menu ={
     // ご飯，スープ類
     "ライス(SS)" : 80,
@@ -70,6 +80,7 @@ for(let i in menu){
 
 function Gacha(i){
     sum = 0;
+    cnt = 0;
 
     let limit = parseInt(document.getElementById("budget").value, 10);
     // clear results
