@@ -1,12 +1,32 @@
-let menuLength = 0;
-let randomNum;
-let sum = 0;
-let cnt = 0;
-let rate =[1.08, 1.1];
-let menuName = [];
-let menuPrice = [];
-let resultName = [];
-let resultPrice = [];
+let riceMenuLength = 0;
+let mainMenuLength = 0;
+let subMenuLength = 0;
+let desertLength = 0;
+let randomNum2;
+let limit;
+let sum2 = 0;
+let cnt2 = 0;
+let rate2 = [1.08,1.1];
+let riceMenuName = [];
+let riceMenuPrice = [];
+let mainMenuName = [];
+let mainMenuPrice = [];
+let subMenuName = [];
+let subMenuPrice = [];
+let desertName = [];
+let desertPrice = [];
+let resultName2 = [];
+let resultPrice2 = [];
+
+let btn_in2 = document.getElementById("eatin2");
+btn_in2.addEventListener('click',function(){
+    GachaOperator(1);
+},false);
+
+let btn_out2 = document.getElementById("takeout2");
+btn_out2.addEventListener('click',function(){
+    GachaOperator(0);
+},false);
 
 let riceMenu = {
     // ご飯，スープ類
@@ -70,35 +90,105 @@ let desert = {
     "シュークリーム(抹茶)" : 180
 }
 
-menuName = Object.keys(menu);
+riceMenuName = Object.keys(riceMenu);
+mainMenuName = Object.keys(mainMenu);
+subMenuName = Object.keys(subMenu);
+desertName = Object.keys(desert);
 
 for(let i in menu){
-    menuLength++;
-    menuPrice.push(menu[i]);
+    riceMenuLength++;
+    riceMenuPrice.push(riceMenu[i]);
 }
 
-function Gacha(i){
-    sum = 0;
+for(let i in menu){
+    mainMenuLength++;
+    mainMenuPrice.push(mainMenu[i]);
+}
 
-    let limit = parseInt(document.getElementById("budget").value, 10);
+for(let i in menu){
+    subMenuLength++;
+    subMenuPrice.push(subMenu[i]);
+}
+
+for(let i in menu){
+    desertLength++;
+    desertPrice.push(desert[i]);
+}
+
+function GachaOperator(i){
+    sum2 = 0;
+
+    limit = parseInt(document.getElementById("budget").value, 10);
     // clear results
     document.getElementById("result").innerHTML = "";
-
-    while(sum <= limit/rate[i] - 20){
-        randomNum = Math.floor(Math.random() * menuLength);
-        sum = sum + menuPrice[randomNum];
-        if(sum <= limit/rate[i]){
-            resultName[cnt] = menuName[randomNum];
-            resultPrice[cnt] = menuPrice[randomNum];
-            PrintResults(cnt);
-            cnt++;
-        } else {
-            sum = sum - menuPrice[randomNum];
-        }
+    RiceGacha();
+    while(sum2 <= limit/rate2[i] - 20){
+        MainGacha(rate2[i]);
+        SubGacha(rate2[i]);
+        DesertGacha(rate2[i]);
     }
-    document.getElementById("result").innerHTML += "<p>合計:" + sum + "円(税込:" + Math.floor(sum * rate[i]) + "円)</p>";
+
+    document.getElementById("result").innerHTML += "<p>合計:" + sum2 + "円(税込:" + Math.floor(sum2 * rate2[i]) + "円)</p>";
 }
 
-function PrintResults(cnt){
-    document.getElementById("result").innerHTML += "<p>" + resultName[cnt] + ":" + resultPrice[cnt] + "円</p>";
+function RiceGacha(){
+    randomNum2 = Math.floor(Math.random() * riceMenuLength);
+    sum2 += riceMenuPrice[randomNum2];
+    resultName2[cnt2] = riceMenuName[randomNum2];
+    resultPrice2[cnt2] = riceMenuPrice[randomNum2];
+    document.getElementById("result").innerHTML += "<h3>主食</h3>";
+    PrintResults(cnt2);
+    cnt2++;
+}
+
+function MainGacha(i){
+    if(sum2 >= limit/rate2[i] -20){
+        return;
+    }
+    randomNum2 = Math.floor(Math.random() * mainMenuLength);
+    sum2 += mainMenuPrice[randomNum2];
+    if(sum2 <= limit/rate2[i]){
+        resultName2[cnt2] = mainMenuName[randomNum2];
+        resultPrice2[cnt2] = mainMenuPrice[randomNum2];
+        PrintResults(cnt2);
+        cnt2++;
+    } else {
+        sum2 = sum2 - mainMenuPrice[randomNum2];
+    }
+}
+
+function SubGacha(i){
+    if(sum2 >= limit/rate2[i] -20){
+        return;
+    }
+    randomNum2 = Math.floor(Math.random() * subMenuLength);
+    sum2 += subMenuPrice[randomNum2];
+    if(sum2 <= limit/rate2[i]){
+        resultName2[cnt2] = subMenuName[randomNum2];
+        resultPrice2[cnt2] = subMenuPrice[randomNum2];
+        PrintResults(cnt2);
+        cnt2++;
+    } else {
+        sum2 = sum2 - subMenuPrice[randomNum2];
+    }
+}
+
+function DesertGacha(i){
+    if(sum2 >= limit/rate2[i] -20){
+        return;
+    }
+    randomNum2 = Math.floor(Math.random() * desertLength);
+    sum2 += desertPrice[randomNum2];
+    if(sum2 <= limit/rate2[i]){
+        resultName[cnt2] = desertName[randomNum2];
+        resultPrice[cnt2] = desertPrice[randomNum2];
+        PrintResults(cnt2);
+        cnt2++;
+    } else {
+        sum2 = sum2 - desertPrice[randomNum2];
+    }
+}
+
+function PrintResults(cnt2){
+    document.getElementById("result").innerHTML += "<p>" + resultName2[cnt2] + ":" + resultPrice2[cnt2] + "円</p>";
 }
