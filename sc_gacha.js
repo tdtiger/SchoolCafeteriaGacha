@@ -21,8 +21,20 @@ fetch('menu.json')
     })
     .catch(error => console.error('Error loading menu:', error));
 
+let btn_in = document.getElementById("eatin");
+btn_in.addEventListener('click',function(){
+    Gacha(1);
+},false);
+
+let btn_out = document.getElementById("takeout");
+btn_out.addEventListener('click',function(){
+    Gacha(0);
+},false);
+
+
 function Gacha(i) {
     sum = 0;
+    cnt = 0;
 
     let limit = parseInt(document.getElementById("budget").value, 10);
     // clear results
