@@ -59,7 +59,8 @@ function Gacha(i) {
     for(let j = 0; j < cnt; ++j){
         postText += resultName[j] + ":" + resultPrice[j] + "円\n";
     }
-    postText += "\n合計" + sum + "円でした!";
+    postText += "\n合計" + sum + "円でした!\n\n";
+    postText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriaGacha/";
 
     let btn_send = document.getElementById("toX");
     btn_send.addEventListener('click',function(){
