@@ -46,13 +46,23 @@ function Gacha(i) {
         if (sum <= limit / rate[i]) {
             resultName[cnt] = menuName[randomNum];
             resultPrice[cnt] = menuPrice[randomNum];
-            PrintResults(cnt);
             cnt++;
         } else {
             sum = sum - menuPrice[randomNum];
         }
     }
+
+    for(let j = 0; j < cnt; ++j){
+        PrintResults(j);
+    }
+
     document.getElementById("result").innerHTML += "<p>合計:" + sum + "円(税込:" + Math.floor(sum * rate[i]) + "円)</p>";
+    document.getElementById("send").innerHTML = '<input type="button" id="toX" value="結果をXに投稿する">';
+
+    let btn_send = document.getElementById("toX");
+    btn_send.addEventListener('click',function(){
+        window.open("http://twitter.com", "blank", "width=600, height=300");
+    })
 }
 
 function PrintResults(cnt) {
