@@ -55,9 +55,15 @@ function Gacha(i) {
     document.getElementById("result").innerHTML += "<p>合計:" + sum + "円(税込:" + Math.floor(sum * rate[i]) + "円)</p>";
     document.getElementById("send").innerHTML = '<input type="button" id="toX" value="結果をXに投稿する">';
 
+    let postText = "学食ガチャを予算" + limit + "円で回した結果・・・\n\n";
+    for(let j = 0; j < cnt; ++j){
+        postText += resultName[j] + ":" + resultPrice[j] + "円\n";
+    }
+    postText += "\n合計" + sum + "円でした!";
+
     let btn_send = document.getElementById("toX");
     btn_send.addEventListener('click',function(){
-        window.open("http://twitter.com", "blank", "width=600, height=300");
+        window.open('http://twitter.com/intent/tweet?&text=' + encodeURIComponent(postText), "blank", "width=600, height=300");
     })
 }
 
