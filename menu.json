@@ -10,6 +10,7 @@
         { "name": "牛肉じゃが", "price": 220, "category": "メインおかず" },
         { "name": "旨厚ハムカツ", "price": 230, "category": "メインおかず" },
         { "name": "銀鮭の塩焼き", "price": 260, "category": "メインおかず" },
+        { "name": "サバの味噌煮", "price": 270, "category": "サブおかず" },
         { "name": "ささみカツ卵とじあんかけ", "price": 300, "category": "メインおかず" },
         { "name": "ハンバーグテリヤキペッパーソース", "price": 300, "category": "メインおかず" },
         { "name": "日替わり", "price": 300, "category": "メインおかず" },
@@ -40,8 +41,11 @@
         { "name": "おくらと山芋のねばねばサラダ", "price": 100, "category": "小鉢" },
         { "name": "スタミナ豆腐", "price": 100, "category": "小鉢" },
         { "name": "肉団子", "price": 100, "category": "小鉢" },
+        { "name": "焼きプリンタルト", "price": 80, "category": "デザート"},
+        { "name": "フルーツヨーグルト", "price": 120, "category": "デザート"},
         { "name": "パンナコッタMIXベリー", "price": 140, "category": "デザート" },
         { "name": "シュークリーム(バニラ)", "price": 180, "category": "デザート" },
-        { "name": "シュークリーム(抹茶)", "price": 180, "category": "デザート" }
+        { "name": "シュークリーム(抹茶)", "price": 180, "category": "デザート" },
+        { "name": "レアチーズケーキ", "price": 350, "category": "デザート" }
     ]
 }
