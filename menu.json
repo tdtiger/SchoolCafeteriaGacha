@@ -19,6 +19,7 @@
         { "name": "カレーライス", "price": 290, "category": "カレー・丼" },
         { "name": "チキンカレー", "price": 310, "category": "カレー・丼" },
         { "name": "牛丼", "price": 380, "category": "カレー・丼" },
+        { "name": "豚角煮丼", "price": 420, "category": "カレー・丼" },
         { "name": "カツカレー", "price": 460, "category": "カレー・丼" },
         { "name": "豚塩カルビ焼肉丼", "price": 490, "category": "カレー・丼" },
         { "name": "かけうどん", "price": 230, "category": "麺類" },
@@ -28,6 +29,7 @@
         { "name": "カレーうどん", "price": 330, "category": "麺類" },
         { "name": "冷やしぶっかけおろしうどん", "price": 330, "category": "麺類" },
         { "name": "味付け海苔", "price": 20, "category": "サブおかず" },
+        { "name": "野菜コロッケ", "price": 70, "category": "サブおかず" },
         { "name": "彩り野菜サラダ", "price": 140, "category": "サブおかず" },
         { "name": "ジャンボフランク&ポテト", "price": 150, "category": "サブおかず" },
         { "name": "漬物", "price": 40, "category": "小鉢" },
@@ -46,6 +48,6 @@
         { "name": "パンナコッタMIXベリー", "price": 140, "category": "デザート" },
         { "name": "シュークリーム(バニラ)", "price": 180, "category": "デザート" },
         { "name": "シュークリーム(抹茶)", "price": 180, "category": "デザート" },
-        { "name": "レアチーズケーキ", "price": 350, "category": "デザート" }
+        { "name": "ニューヨークチーズケーキ", "price": 350, "category": "デザート" }
     ]
 }
