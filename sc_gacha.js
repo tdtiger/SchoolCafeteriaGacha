@@ -67,3 +67,24 @@ function PrintResults() {
     const lastResult = results[results.length - 1]; // 最新の結果を取得
     document.getElementById("result").innerHTML += "<p>" + lastResult.name + ":" + lastResult.price + "円</p>";
 }
+
+function GenerateTweetText(limit, sum, rate) {
+    let baseText = "学食ガチャを予算" + limit + "円で回した結果・・・\n\n";
+    let resultText = "";
+
+    // 140文字以内に収めるため、結果を短縮
+    for (let j = 0; j < results.length; j++) {
+        const itemText = results[j].name + ":" + results[j].price + "円\n";
+        if ((baseText + resultText + itemText).length > 110) { // URLなども含めて文字数を考慮
+            resultText += "他" + (results.length - j) + "品…\n";　// 制限文字数を超えた部分は略記
+            break;
+        }
+        resultText += itemText;
+    }
+
+    baseText += resultText;
+    baseText += "\n合計" + sum + "(税込:" + Math.floor(sum * rate) + ")円でした!\n";
+    baseText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriaGacha/";
+
+    return encodeURIComponent(baseText);
+}
