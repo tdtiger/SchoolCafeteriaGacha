@@ -53,7 +53,7 @@ function Gacha(i) {
         }
     }
     document.getElementById("result").innerHTML += "<p>合計:" + sum + "円(税込:" + Math.floor(sum * rate[i]) + "円)</p>";
-    document.getElementById("send").innerHTML = '<input type="button" id="toX" value="結果をXに投稿する">';
+    document.getElementById("send").innerHTML = '<input type="button" id="toX" value="結果を&#x1D54Fに投稿する">';
 
     let postText = GenerateTweetText(limit, sum, rate[i]);
 
