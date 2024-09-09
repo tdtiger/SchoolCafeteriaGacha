@@ -23,15 +23,15 @@ fetch('menu.json')
 
 //イートインボタン
 let btn_in = document.getElementById("eatin");
-btn_in.addEventListener('click',function(){
+btn_in.addEventListener('click', function () {
     Gacha(1);
-},false);
+}, false);
 
 //テイクアウトボタン
 let btn_out = document.getElementById("takeout");
-btn_out.addEventListener('click',function(){
+btn_out.addEventListener('click', function () {
     Gacha(0);
-},false);
+}, false);
 
 
 function Gacha(i) {
@@ -60,19 +60,19 @@ function Gacha(i) {
     let postText = "学食ガチャを予算" + limit + "円で回した結果・・・\n\n";
 
     //ガチャ結果を一品ごとに改行した文字列を作る
-    for(let j = 0; j < cnt; ++j){
+    for (let j = 0; j < cnt; ++j) {
         postText += resultName[j] + ":" + resultPrice[j] + "円\n";
     }
 
     //金額とリンクを追加
-    postText += "\n合計" + sum + "(税込:"+ Math.floor(sum * rate[i]) + ")円でした!\n\n";
+    postText += "\n合計" + sum + "(税込:" + Math.floor(sum * rate[i]) + ")円でした!\n\n";
     postText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriaGacha/";
 
     //投稿用にエンコード
     postText = encodeURIComponent(postText);
 
     let btn_send = document.getElementById("toX");
-    btn_send.addEventListener('click',function(){
+    btn_send.addEventListener('click', function () {
         window.open('http://twitter.com/intent/tweet?&text=' + postText, "blank", "width=600, height=300");
     })
 }
