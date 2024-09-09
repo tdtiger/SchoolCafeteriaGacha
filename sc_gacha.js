@@ -21,18 +21,17 @@ fetch('menu.json')
     })
     .catch(error => console.error('Error loading menu:', error));
 
-//イートインボタン
+// イートインボタン
 let btn_in = document.getElementById("eatin");
 btn_in.addEventListener('click', function () {
     Gacha(1);
 }, false);
 
-//テイクアウトボタン
+// テイクアウトボタン
 let btn_out = document.getElementById("takeout");
 btn_out.addEventListener('click', function () {
     Gacha(0);
 }, false);
-
 
 function Gacha(i) {
     sum = 0;
@@ -64,11 +63,11 @@ function Gacha(i) {
         postText += resultName[j] + ":" + resultPrice[j] + "円\n";
     }
 
-    //金額とリンクを追加
+    // 金額とリンクを追加
     postText += "\n合計" + sum + "(税込:" + Math.floor(sum * rate[i]) + ")円でした!\n\n";
     postText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriaGacha/";
 
-    //投稿用にエンコード
+    // 投稿用にエンコード
     postText = encodeURIComponent(postText);
 
     let btn_send = document.getElementById("toX");
