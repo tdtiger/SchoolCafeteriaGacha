@@ -19,6 +19,7 @@
         { "name": "カレーライス", "price": 290, "category": "カレー・丼" },
         { "name": "チキンカレー", "price": 310, "category": "カレー・丼" },
         { "name": "牛丼", "price": 380, "category": "カレー・丼" },
+        { "name": "チキンカツ卵とじあんかけ丼", "price": 390, "category": "カレー・丼" },
         { "name": "豚角煮丼", "price": 420, "category": "カレー・丼" },
         { "name": "カツカレー", "price": 460, "category": "カレー・丼" },
         { "name": "豚塩カルビ焼肉丼", "price": 490, "category": "カレー・丼" },
@@ -38,6 +39,8 @@
         { "name": "豆腐", "price": 60, "category": "小鉢" },
         { "name": "法蓮草", "price": 60, "category": "小鉢" },
         { "name": "じゃこおくらスライス", "price": 80, "category": "小鉢" },
+        { "name": "おくらのごま和え", "price": 80, "category": "小鉢" },
+        { "name": "具だくさんナムルサラダ", "price": 80, "category": "小鉢" },
         { "name": "巣ごもりたまご", "price": 90, "category": "小鉢" },
         { "name": "大学芋", "price": 100, "category": "小鉢" },
         { "name": "おくらと山芋のねばねばサラダ", "price": 100, "category": "小鉢" },
@@ -45,9 +48,11 @@
         { "name": "肉団子", "price": 100, "category": "小鉢" },
         { "name": "焼きプリンタルト", "price": 80, "category": "デザート"},
         { "name": "フルーツヨーグルト", "price": 120, "category": "デザート"},
+        { "name": "ぶどうゼリーナタデココ入り", "price": 120, "category": "デザート"},
         { "name": "パンナコッタMIXベリー", "price": 140, "category": "デザート" },
         { "name": "シュークリーム(バニラ)", "price": 180, "category": "デザート" },
         { "name": "シュークリーム(抹茶)", "price": 180, "category": "デザート" },
-        { "name": "ニューヨークチーズケーキ", "price": 350, "category": "デザート" }
+        { "name": "ニューヨークチーズケーキ", "price": 350, "category": "デザート" },
+        { "name": "白桃のタルト", "price": 360, "category": "デザート" }
     ]
 }
