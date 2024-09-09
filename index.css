@@ -41,6 +41,23 @@ input[type="button"]:hover {
     background-color: #45a049; 
 }
 
+/*X共有ボタンのスタイル*/
+#toX {
+    background-color: #000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#toX:hover {
+    background-color: #333;
+}
+
+
 #result, #send {
     margin-top: 20px;
     padding: 10px;
