@@ -1,3 +1,7 @@
+:root {
+    --main-green: #369c3d; /* 緑色を変数として定義 */
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,7 +14,7 @@ h1 {
     text-align: center;
     font-size: 2em;
     margin-bottom: 20px;
-    color: #4CAF50;
+    color: var(--main-green); 
 }
 
 input[type="name"] {
@@ -24,10 +28,9 @@ input[type="name"] {
 
 input[type="button"] {
     padding: 10px 20px;
-    margin: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: var(--main-green); 
     color: white;
     font-size: 1em;
     cursor: pointer;
@@ -35,7 +38,7 @@ input[type="button"] {
 }
 
 input[type="button"]:hover {
-    background-color: #45a049;
+    background-color: #45a049; 
 }
 
 #result, #send {
