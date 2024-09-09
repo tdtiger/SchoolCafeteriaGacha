@@ -55,19 +55,7 @@ function Gacha(i) {
     document.getElementById("result").innerHTML += "<p>合計:" + sum + "円(税込:" + Math.floor(sum * rate[i]) + "円)</p>";
     document.getElementById("send").innerHTML = '<input type="button" id="toX" value="結果をXに投稿する">';
 
-    let postText = "学食ガチャを予算" + limit + "円で回した結果・・・\n\n";
-
-    // ガチャ結果を一品ごとに改行した文字列を作る
-    results.forEach(result => {
-        postText += result.name + ":" + result.price + "円\n";
-    });
-
-    // 金額とリンクを追加
-    postText += "\n合計" + sum + "(税込:" + Math.floor(sum * rate[i]) + ")円でした!\n\n";
-    postText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriaGacha/";
-
-    // 投稿用にエンコード
-    postText = encodeURIComponent(postText);
+    let postText = GenerateTweetText(limit, sum, rate[i]);
 
     let btn_send = document.getElementById("toX");
     btn_send.addEventListener('click', function () {
