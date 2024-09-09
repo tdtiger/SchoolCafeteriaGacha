@@ -53,21 +53,9 @@ function Gacha(i) {
         }
     }
     document.getElementById("result").innerHTML += "<p>合計:" + sum + "円(税込:" + Math.floor(sum * rate[i]) + "円)</p>";
-    document.getElementById("send").innerHTML = '<input type="button" id="toX" value="結果をXに投稿する">';
+    document.getElementById("send").innerHTML = '<input type="button" id="toX" value="結果を&#x1D54Fに投稿する">';
 
-    let postText = "学食ガチャを予算" + limit + "円で回した結果・・・\n\n";
-
-    // ガチャ結果を一品ごとに改行した文字列を作る
-    results.forEach(result => {
-        postText += result.name + ":" + result.price + "円\n";
-    });
-
-    // 金額とリンクを追加
-    postText += "\n合計" + sum + "(税込:" + Math.floor(sum * rate[i]) + ")円でした!\n\n";
-    postText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriaGacha/";
-
-    // 投稿用にエンコード
-    postText = encodeURIComponent(postText);
+    let postText = GenerateTweetText(limit, sum, rate[i]);
 
     let btn_send = document.getElementById("toX");
     btn_send.addEventListener('click', function () {
@@ -78,4 +66,25 @@ function Gacha(i) {
 function PrintResults() {
     const lastResult = results[results.length - 1]; // 最新の結果を取得
     document.getElementById("result").innerHTML += "<p>" + lastResult.name + ":" + lastResult.price + "円</p>";
+}
+
+function GenerateTweetText(limit, sum, rate) {
+    let baseText = "学食ガチャを予算" + limit + "円で回した結果・・・\n\n";
+    let resultText = "";
+
+    // 140文字以内に収めるため、結果を短縮
+    for (let j = 0; j < results.length; j++) {
+        const itemText = results[j].name + ":" + results[j].price + "円\n";
+        if ((baseText + resultText + itemText).length > 110) { // URLなども含めて文字数を考慮
+            resultText += "他" + (results.length - j) + "品…\n";　// 制限文字数を超えた部分は略記
+            break;
+        }
+        resultText += itemText;
+    }
+
+    baseText += resultText;
+    baseText += "\n合計" + sum + "(税込:" + Math.floor(sum * rate) + ")円でした!\n";
+    baseText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriaGacha/";
+
+    return encodeURIComponent(baseText);
 }
