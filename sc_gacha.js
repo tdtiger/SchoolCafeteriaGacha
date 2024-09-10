@@ -1,4 +1,3 @@
-let menuLength = 0;
 const taxRates = {
     eatIn: 1.1,
     takeOut: 1.08
@@ -15,7 +14,6 @@ fetch('menu.json')
         menuItems.forEach(item => {
             menuName.push(item.name);
             menuPrice.push(item.price);
-            menuLength++;
         });
     })
     .catch(error => console.error('Error loading menu:', error));
@@ -43,7 +41,7 @@ function rollGacha(taxRate) {
     document.getElementById("result").innerHTML = "";
 
     while (pretaxTotalPrice <= limit / taxRate - 20) {
-        randomNum = Math.floor(Math.random() * menuLength);
+        randomNum = Math.floor(Math.random() * menuName.length);
         pretaxTotalPrice += menuPrice[randomNum];
         if (pretaxTotalPrice <= limit / taxRate) {
             results.push({
