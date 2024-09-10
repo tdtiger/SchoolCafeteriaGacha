@@ -50,7 +50,7 @@ function rollGacha(taxRate) {
                 name: menuName[randomNum],
                 price: menuPrice[randomNum]
             });
-            PrintResults();
+            printResults();
         } else {
             pretaxTotalPrice -= menuPrice[randomNum];
         }
@@ -58,7 +58,7 @@ function rollGacha(taxRate) {
     document.getElementById("result").innerHTML += "<p>合計:" + pretaxTotalPrice + "円(税込:" + Math.floor(pretaxTotalPrice * taxRate) + "円)</p>";
     document.getElementById("send").innerHTML = '<input type="button" id="toX" value="結果を&#x1D54Fに投稿する">';
 
-    let postText = GenerateTweetText(limit, pretaxTotalPrice, taxRate);
+    let postText = generateTweetText(limit, pretaxTotalPrice, taxRate);
 
     let btn_send = document.getElementById("toX");
     btn_send.addEventListener('click', function () {
@@ -66,12 +66,12 @@ function rollGacha(taxRate) {
     });
 }
 
-function PrintResults() {
+function printResults() {
     const lastResult = results[results.length - 1]; // 最新の結果を取得
     document.getElementById("result").innerHTML += "<p>" + lastResult.name + ":" + lastResult.price + "円</p>";
 }
 
-function GenerateTweetText(limit, pretaxTotalPrice, taxRate) {
+function generateTweetText(limit, pretaxTotalPrice, taxRate) {
     let baseText = "学食ガチャを予算" + limit + "円で回した結果・・・\n\n";
     let resultText = "";
 
