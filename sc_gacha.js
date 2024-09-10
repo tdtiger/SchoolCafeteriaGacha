@@ -23,16 +23,17 @@ fetch('menu.json')
 // イートインボタン
 let btn_in = document.getElementById("eatin");
 btn_in.addEventListener('click', function () {
-    Gacha(taxRates.eatIn);
+    rollGacha(taxRates.eatIn);
 }, false);
 
 // テイクアウトボタン
 let btn_out = document.getElementById("takeout");
 btn_out.addEventListener('click', function () {
-    Gacha(taxRates.takeOut);
+    rollGacha(taxRates.takeOut);
 }, false);
 
-function Gacha(taxRate) {
+// ガチャを回す関数
+function rollGacha(taxRate) {
     let randomNum = 0;
     let pretaxTotalPrice = 0;
     results = []; // 結果の配列を初期化
@@ -86,7 +87,7 @@ function GenerateTweetText(limit, pretaxTotalPrice, taxRate) {
 
     baseText += resultText;
     baseText += "\n合計" + pretaxTotalPrice + "(税込:" + Math.floor(pretaxTotalPrice * taxRate) + ")円でした!\n";
-    baseText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriaGacha/";
+    baseText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriarollGacha/";
 
     return encodeURIComponent(baseText);
 }
