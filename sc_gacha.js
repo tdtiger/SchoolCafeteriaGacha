@@ -1,5 +1,8 @@
 let menuLength = 0;
-let rate = [1.08, 1.1];
+const taxRates = {
+    eatIn: 1.1,
+    takeOut: 1.08
+};
 let menuName = [];
 let menuPrice = [];
 let results = []; // ガチャ結果を保持するためのオブジェクトの配列
@@ -20,16 +23,16 @@ fetch('menu.json')
 // イートインボタン
 let btn_in = document.getElementById("eatin");
 btn_in.addEventListener('click', function () {
-    Gacha(1);
+    Gacha(taxRates.eatIn);
 }, false);
 
 // テイクアウトボタン
 let btn_out = document.getElementById("takeout");
 btn_out.addEventListener('click', function () {
-    Gacha(0);
+    Gacha(taxRates.takeOut);
 }, false);
 
-function Gacha(i) {
+function Gacha(taxRate) {
     let randomNum = 0;
     let totalPrice = 0;
     results = []; // 結果の配列を初期化
@@ -38,10 +41,10 @@ function Gacha(i) {
     // clear results
     document.getElementById("result").innerHTML = "";
 
-    while (totalPrice <= limit / rate[i] - 20) {
+    while (totalPrice <= limit / taxRate - 20) {
         randomNum = Math.floor(Math.random() * menuLength);
         totalPrice += menuPrice[randomNum];
-        if (totalPrice <= limit / rate[i]) {
+        if (totalPrice <= limit / taxRate) {
             results.push({
                 name: menuName[randomNum],
                 price: menuPrice[randomNum]
@@ -51,10 +54,10 @@ function Gacha(i) {
             totalPrice -= menuPrice[randomNum];
         }
     }
-    document.getElementById("result").innerHTML += "<p>合計:" + totalPrice + "円(税込:" + Math.floor(totalPrice * rate[i]) + "円)</p>";
+    document.getElementById("result").innerHTML += "<p>合計:" + totalPrice + "円(税込:" + Math.floor(totalPrice * taxRate) + "円)</p>";
     document.getElementById("send").innerHTML = '<input type="button" id="toX" value="結果を&#x1D54Fに投稿する">';
 
-    let postText = GenerateTweetText(limit, totalPrice, rate[i]);
+    let postText = GenerateTweetText(limit, totalPrice, taxRate);
 
     let btn_send = document.getElementById("toX");
     btn_send.addEventListener('click', function () {
@@ -67,7 +70,7 @@ function PrintResults() {
     document.getElementById("result").innerHTML += "<p>" + lastResult.name + ":" + lastResult.price + "円</p>";
 }
 
-function GenerateTweetText(limit, totalPrice, rate) {
+function GenerateTweetText(limit, totalPrice, taxRate) {
     let baseText = "学食ガチャを予算" + limit + "円で回した結果・・・\n\n";
     let resultText = "";
 
@@ -82,7 +85,7 @@ function GenerateTweetText(limit, totalPrice, rate) {
     }
 
     baseText += resultText;
-    baseText += "\n合計" + totalPrice + "(税込:" + Math.floor(totalPrice * rate) + ")円でした!\n";
+    baseText += "\n合計" + totalPrice + "(税込:" + Math.floor(totalPrice * taxRate) + ")円でした!\n";
     baseText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriaGacha/";
 
     return encodeURIComponent(baseText);
