@@ -34,30 +34,30 @@ btn_out.addEventListener('click', function () {
 
 function Gacha(taxRate) {
     let randomNum = 0;
-    let totalPrice = 0;
+    let pretaxTotalPrice = 0;
     results = []; // 結果の配列を初期化
 
     let limit = parseInt(document.getElementById("budget").value, 10);
     // clear results
     document.getElementById("result").innerHTML = "";
 
-    while (totalPrice <= limit / taxRate - 20) {
+    while (pretaxTotalPrice <= limit / taxRate - 20) {
         randomNum = Math.floor(Math.random() * menuLength);
-        totalPrice += menuPrice[randomNum];
-        if (totalPrice <= limit / taxRate) {
+        pretaxTotalPrice += menuPrice[randomNum];
+        if (pretaxTotalPrice <= limit / taxRate) {
             results.push({
                 name: menuName[randomNum],
                 price: menuPrice[randomNum]
             });
             PrintResults();
         } else {
-            totalPrice -= menuPrice[randomNum];
+            pretaxTotalPrice -= menuPrice[randomNum];
         }
     }
-    document.getElementById("result").innerHTML += "<p>合計:" + totalPrice + "円(税込:" + Math.floor(totalPrice * taxRate) + "円)</p>";
+    document.getElementById("result").innerHTML += "<p>合計:" + pretaxTotalPrice + "円(税込:" + Math.floor(pretaxTotalPrice * taxRate) + "円)</p>";
     document.getElementById("send").innerHTML = '<input type="button" id="toX" value="結果を&#x1D54Fに投稿する">';
 
-    let postText = GenerateTweetText(limit, totalPrice, taxRate);
+    let postText = GenerateTweetText(limit, pretaxTotalPrice, taxRate);
 
     let btn_send = document.getElementById("toX");
     btn_send.addEventListener('click', function () {
@@ -70,7 +70,7 @@ function PrintResults() {
     document.getElementById("result").innerHTML += "<p>" + lastResult.name + ":" + lastResult.price + "円</p>";
 }
 
-function GenerateTweetText(limit, totalPrice, taxRate) {
+function GenerateTweetText(limit, pretaxTotalPrice, taxRate) {
     let baseText = "学食ガチャを予算" + limit + "円で回した結果・・・\n\n";
     let resultText = "";
 
@@ -85,7 +85,7 @@ function GenerateTweetText(limit, totalPrice, taxRate) {
     }
 
     baseText += resultText;
-    baseText += "\n合計" + totalPrice + "(税込:" + Math.floor(totalPrice * taxRate) + ")円でした!\n";
+    baseText += "\n合計" + pretaxTotalPrice + "(税込:" + Math.floor(pretaxTotalPrice * taxRate) + ")円でした!\n";
     baseText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriaGacha/";
 
     return encodeURIComponent(baseText);
