@@ -1,5 +1,4 @@
 let menuLength = 0;
-let randomNum;
 let sum = 0;
 let rate = [1.08, 1.1];
 let menuName = [];
@@ -32,6 +31,7 @@ btn_out.addEventListener('click', function () {
 }, false);
 
 function Gacha(i) {
+    let randomNum = 0;
     sum = 0;
     results = []; // 結果の配列を初期化
 
