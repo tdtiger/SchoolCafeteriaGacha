@@ -85,7 +85,7 @@ function generateTweetText(limit, pretaxTotalPrice, taxRate) {
 
     baseText += resultText;
     baseText += "\n合計" + pretaxTotalPrice + "(税込:" + Math.floor(pretaxTotalPrice * taxRate) + ")円でした!\n";
-    baseText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriarollGacha/";
+    baseText += "↓ガチャを回す↓\nhttps://tdtiger.github.io/SchoolCafeteriaGacha/";
 
     return encodeURIComponent(baseText);
 }
