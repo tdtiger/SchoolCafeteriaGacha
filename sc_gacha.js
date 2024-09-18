@@ -77,7 +77,7 @@ function generateTweetText(limit, pretaxTotalPrice, taxRate) {
     for (let j = 0; j < results.length; j++) {
         const itemText = results[j].name + ":" + results[j].price + "円\n";
         if ((baseText + resultText + itemText).length > 110) { // URLなども含めて文字数を考慮
-            resultText += "他" + (results.length - j) + "品…\n";　// 制限文字数を超えた部分は略記
+            resultText += "他" + (results.length - j) + "品…\n"; // 制限文字数を超えた部分は略記
             break;
         }
         resultText += itemText;
