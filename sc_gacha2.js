@@ -1,11 +1,11 @@
-const taxRates = {
+const taxRates_B = {
     eatIn: 1.1,
     takeOut: 1.08
 };
-let menuName = [];
-let menuPrice = [];
+let menuName_B = [];
+let menuPrice_B = [];
 let menuCategory = [];
-let results = []; // ガチャ結果を保持するためのオブジェクトの配列
+let results_B = []; // ガチャ結果を保持するためのオブジェクトの配列
 let mainFlag;
 
 // JSONファイルを読み込む
@@ -22,13 +22,13 @@ fetch('menu.json')
     .catch(error => console.error('Error loading menu:', error));
 
 // イートインボタン
-let btn_in = document.getElementById("eatin");
+let btn_in_B = document.getElementById("eatin2");
 btn_in.addEventListener('click', function () {
     rollGacha(taxRates.eatIn);
 }, false);
 
 // テイクアウトボタン
-let btn_out = document.getElementById("takeout");
+let btn_out_B = document.getElementById("takeout2");
 btn_out.addEventListener('click', function () {
     rollGacha(taxRates.takeOut);
 }, false);
